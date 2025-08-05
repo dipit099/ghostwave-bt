@@ -64,7 +64,7 @@
 | `build_script.ps1` | Build APK/web app with versioning | `.\build_script.ps1 android` |
 | `clean_script.ps1` | Remove all build artifacts and caches | Run when having build issues |
 
-### 🔧 Troubleshooting
+## Troubleshooting
 
 ### Flutter not found
 Run `.\setup_script.ps1` - it will guide you through Flutter installation.
