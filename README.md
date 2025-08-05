@@ -14,12 +14,9 @@
 
 ##  App Features
 
-- **8-Direction Movement Control**: Forward, backward, left, right, and diagonal movements
+- **8-Direction Movement Control**: Forward, backward, left, right
 - **Bluetooth Connectivity**: Connect to Bluetooth-enabled devices
-- **Modern UI**: Dark theme with orange accent controls
-- **Responsive Design**: Works on phones and tablets
-- **Web Testing**: Test functionality in browser before building APK
-
+- **Modern UI**: Dark theme with controls
 
 ##  Installation
 
