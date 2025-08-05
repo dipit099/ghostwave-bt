@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/opt/homebrew/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/smammahdi/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/smammahdi/Library/CloudStorage/OneDrive-BUET/BUET/L3T1/CSE 316/Project/Ideation_Organized/01_Spatial_Audio_System/SpatialAudioSystem/bt_controller/flutter/android/app/.cxx/Debug/3c706x4i/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/smammahdi/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/smammahdi/Library/CloudStorage/OneDrive-BUET/BUET/L3T1/CSE 316/Project/Ideation_Organized/01_Spatial_Audio_System/SpatialAudioSystem/bt_controller/flutter/android/app/.cxx/Debug/3c706x4i/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

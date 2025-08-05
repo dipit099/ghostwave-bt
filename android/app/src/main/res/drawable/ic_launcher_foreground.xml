@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Ghost Body - Main shape -->
+    <path
+        android:fillColor="#00D4FF"
+        android:pathData="M54,25 C64,25 72,33 72,43 L72,70 C72,74 70,78 66,80 L58,75 L54,78 L50,75 L42,80 C38,78 36,74 36,70 L36,43 C36,33 44,25 54,25 Z" />
+    
+    <!-- Ghost Eyes -->
+    <ellipse
+        android:fillColor="#1A1A1A"
+        android:pathData="M47,40 C47,37 48.5,35 50.5,35 C52.5,35 54,37 54,40 C54,43 52.5,45 50.5,45 C48.5,45 47,43 47,40 Z" />
+    <ellipse
+        android:fillColor="#1A1A1A"
+        android:pathData="M54,40 C54,37 55.5,35 57.5,35 C59.5,35 61,37 61,40 C61,43 59.5,45 57.5,45 C55.5,45 54,43 54,40 Z" />
+    
+    <!-- Wave Pattern - Left -->
+    <path
+        android:fillColor="#0099CC"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M20,54 Q28,48 36,54 Q44,60 52,54" />
+    
+    <!-- Wave Pattern - Right -->
+    <path
+        android:fillColor="#0099CC"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M56,54 Q64,48 72,54 Q80,60 88,54" />
+    
+    <!-- Wave Pattern - Center -->
+    <path
+        android:fillColor="#AA00FF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M30,64 Q38,58 46,64 Q54,70 62,64 Q70,58 78,64" />
+    
+    <!-- Bluetooth Symbol -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,80 L50,88 L56,82 Z M50,96 L50,88 L56,94 Z M52,90 L58,84 L52,78 L52,86 L46,80 L46,82 L50,86 L50,94 L46,98 L46,100 L52,94 L58,100 L52,94 L52,90 Z" />
+</vector>

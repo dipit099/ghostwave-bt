@@ -1,0 +1,113 @@
+# Flutter Bluetooth Car Controller - Current Issues
+
+## Project Context
+This is a Flutter Bluetooth car controller app designed to control an Arduino-based car via HC-05/HC-06 Bluetooth modules. The app sends specific commands (F/B/L/R for basic movement, G/H/I/J for diagonal movement) based on button presses and multitouch gestures.
+
+## Build System Status ✅ WORKING
+- Build script (`./build_script.sh android`) works perfectly
+- Auto-detects APK location and creates versioned files (bt_controller_v1.apk, v2.apk, etc.)
+- Current version: v6 (41MB, optimized from original 55MB)
+- No manual copying needed anymore
+
+## Current UI Problems 🚨 STILL BROKEN
+
+### Problem 1: Special Buttons Still Show Icons
+**Expected**: C, S, Z buttons should show ONLY the letters C, S, Z (no icons)
+**Current Reality**: The buttons still display icons (tune icon on C, stop icon on S, center focus icon on Z)
+**User's Request**: "don't keep any other symbol other than the C,S and Z for those special buttons"
+
+**Code Changes Made (But Not Working)**:
+```dart
+// In control_button_widget.dart - line 56
+child: (command == ControlCommand.calibrate || command == ControlCommand.stop || command == ControlCommand.resetAngle)
+  ? Center(
+      child: Text(
+        command.command,  // Should show just "C", "S", "Z"
+        style: TextStyle(
+          color: _getIconColor(color),
+          fontSize: size * 0.4,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    )
+  : Column(/* with icons for movement buttons */)
+```
+
+### Problem 2: L/R Buttons Still Arranged Vertically
+**Expected**: L and R buttons should be side by side horizontally in the same row
+**Current Reality**: L and R buttons are still stacked vertically (one above the other)
+**User's Request**: "keep the L and R button side by side in the same row, don't keep them one under the other"
+
+**Code Changes Made (But Not Working)**:
+```dart
+// In control_grid_widget.dart - line 213
+// Right side: Left and Right buttons in horizontal row
+Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    ControlButtonWidget(command: ControlCommand.left, size: 100, ...),
+    const SizedBox(width: 16),
+    ControlButtonWidget(command: ControlCommand.right, size: 100, ...),
+  ],
+),
+```
+
+## What Has Been Attempted
+1. **Multiple clean builds**: `flutter clean && ./build_script.sh android`
+2. **Direct condition checks**: Replaced helper method with inline conditions
+3. **Layout restructuring**: Changed from Column to Row for L/R buttons
+4. **Version increments**: Built v3, v4, v5, v6 with supposed fixes
+
+## Target Layout (What User Wants)
+```
+   [C]      [S]      [Z]     ← Text only, no icons
+   
+[F]      🚗        [L] [R]   ← F/B vertical, L/R horizontal  
+[B]    Status
+```
+
+## Current Layout (What's Actually Showing)
+```
+   [🎵C]    [⏹S]    [🎯Z]   ← Still has icons!
+   
+[F]      🚗        [L]      ← L/R still vertical!
+[B]    Status      [R]
+```
+
+## Button Functionality ✅ WORKING
+- Multitouch diagonal movements work correctly (F+L=G, F+R=I, B+L=H, B+R=J)
+- Press/release behavior works (command on press, 'S' on release)
+- Button color states work (dark→blue for movement, orange→white for special)
+- Bluetooth integration is ready
+
+## Size Requirements ✅ PARTIALLY MET
+- Current: 41MB (reduced from 55MB)
+- Target: ~20MB (would require removing core Flutter components)
+- Movement buttons: 100px (25% larger than original 80px) ✅
+
+## Technical Details
+- Flutter 3.32.8
+- Dart 3.8.1
+- Target: Android API 35
+- Architecture: ARM64-only for size optimization
+- Dependencies: flutter_blue_plus, permission_handler, provider
+
+## Suspected Issues
+1. **Hot reload not working**: Changes might not be applied despite clean builds
+2. **Conditional logic failure**: The special button detection might not be working
+3. **Layout priority**: Row layout might be overridden by parent constraints
+4. **Build cache**: Some cached components might not be updating
+
+## Next Steps Needed
+1. Debug why the conditional logic for special buttons isn't working
+2. Investigate why Row layout for L/R buttons isn't being applied
+3. Possibly need to examine the actual widget tree during runtime
+4. Consider completely rewriting the problematic components from scratch
+
+## Files Modified
+- `lib/widgets/control_button_widget.dart` - Special button text-only logic
+- `lib/widgets/control_grid_widget.dart` - L/R button horizontal layout
+- `lib/providers/controller_provider.dart` - Button icons and states
+- `android/app/build.gradle.kts` - Build optimizations
+- `pubspec.yaml` - Dependency optimizations
+- `build_script.sh` - Automated build and versioning
