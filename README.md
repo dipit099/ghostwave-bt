@@ -62,6 +62,7 @@ Run `.\setup_script.ps1` - it will guide you through Flutter installation.
 
 - **APK files**: `generated/bt_controller_vX.apk`
 
+
 ##  Development Scripts
 
 | Script | Purpose | Usage |
@@ -69,3 +70,8 @@ Run `.\setup_script.ps1` - it will guide you through Flutter installation.
 | `setup_script.ps1` | Initial setup and dependency installation | Run once when setting up |
 | `build_script.ps1` | Build APK/web app with versioning | `.\build_script.ps1 android` |
 | `clean_script.ps1` | Remove all build artifacts and caches | Run when having build issues |
+
+## How to Run the Apk ?
+```bash
+flutter run -d chrome
+```
