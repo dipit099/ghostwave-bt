@@ -74,4 +74,6 @@ Run `.\setup_script.ps1` - it will guide you through Flutter installation.
 ## How to Run the Apk ?
 ```bash
 flutter run -d chrome
+or 
+flutter run -d edge
 ```
